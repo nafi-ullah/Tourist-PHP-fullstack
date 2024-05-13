@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 // import { BsPerson } from 'react-icons/bs';
 // import { BiSearch } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
@@ -13,10 +14,16 @@ import {
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [logo, setLogo] = useState(false)
+  const [logo, setLogo] = useState(false);
+  const navigate = useNavigate();
+
   const handleNav = () => {
     setNav(!nav);
     setLogo(!logo)
+  };
+
+  const handleLogin = () => {
+     navigate("/login", {});
   };
 
   return (
@@ -32,7 +39,7 @@ const Navbar = () => {
         <li>Blog</li>
       </ul>
       <div className='hidden md:flex'>
-            <button>Log in</button>
+            <button onClick={handleLogin}>Log in</button>
       </div>
 
       {/* Hamburger */}
