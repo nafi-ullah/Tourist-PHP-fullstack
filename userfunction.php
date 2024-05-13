@@ -1,6 +1,8 @@
 <?php
 
 require 'dbconnection.php';
+require 'vendor/autoload.php';
+use Firebase\JWT\JWT;
 
 function getUserList()
 {
@@ -113,10 +115,27 @@ function login($username, $password)
 
         // Verify hashed password
         if (password_verify($password, $hashed_password)) {
+
+            $secret_key = 'tourist_secret_key';
+
+            $jwt_payload = [
+                'iss' => 'naficoder',
+                'iat' => time(),
+                'exp' => strtotime("+1 hour"),
+                // 'userid' => $user['userid'],
+                // 'username' => $user['username']
+                // You can add more data to the payload if needed
+            ];
+           
+
+            $jwt_token = JWT::encode($jwt_payload, $secret_key, 'HS256');
+
+
             $data = [
                 'status' => 200,
                 'message' => 'Login successful',
-                'user' => $user
+                'user' => $user,
+                'token' => $jwt_token
             ];
             return $data;
         } else {
