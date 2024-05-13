@@ -39,7 +39,9 @@ function addUser($username, $fullname, $email, $password)
 {
     global $connection;
 
-    $query = "INSERT INTO users (username, fullname, email, password) VALUES ('$username', '$fullname', '$email', '$password')";
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (username, fullname, email, password) VALUES ('$username', '$fullname', '$email', '$hashed_password')";
     if (mysqli_query($connection, $query)) {
         $data = [
             'status' => 201,
@@ -97,4 +99,43 @@ function deleteUser($userid)
     }
 }
 
+
+function login($username, $password)
+{
+    global $connection;
+
+    $query = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($connection, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+        $hashed_password = $user['password'];
+
+        // Verify hashed password
+        if (password_verify($password, $hashed_password)) {
+            $data = [
+                'status' => 200,
+                'message' => 'Login successful',
+                'user' => $user
+            ];
+            return $data;
+        } else {
+            $data = [
+                'status' => 401,
+                'message' => 'Unauthorized: Incorrect password'
+            ];
+            return $data;
+        }
+    } else {
+        $data = [
+            'status' => 404,
+            'message' => 'User not found'
+        ];
+        return $data;
+    }
+}
+
 ?>
+
+
+
