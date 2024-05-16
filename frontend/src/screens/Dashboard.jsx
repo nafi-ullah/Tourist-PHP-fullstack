@@ -6,7 +6,7 @@ import CountryQuery from '../components/DashboardComp/CountryQuery'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='bg-[#F4F2EE]'>
      
         <div className="fixed w-1/5 gap-4 m-5 ">
             <DashProfileCard/>
