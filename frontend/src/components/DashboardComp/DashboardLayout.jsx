@@ -2,8 +2,25 @@ import React from 'react'
 import DashProfileCard from './DashProfileCard'
 import PostsCard from './PostsCard'
 import PostContentCard from './PostContentCard'
+import { useEffect, useState } from "react";
+import axios from "axios"
 
 const DashboardLayout = () => {
+
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        getPosts();
+    }, []);
+
+    function getPosts() {
+        axios.get('http://localhost/api/users/posts').then(function(response) {
+            console.log(response.data);
+            setPosts(response.data);
+        });
+    }
+
+
+
   return (
     
    <div>
