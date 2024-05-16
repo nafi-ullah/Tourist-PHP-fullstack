@@ -1,20 +1,78 @@
-import React from 'react'
+
+import React, { useState, useRef, useEffect } from 'react';
+
+import { uploadFile } from 'react-s3';
+import { accessKey, secretKey } from '../../awsKey';
+
+
+
 
 const PostsCard = () => {
+    const [inputs, setInputs] = useState({
+        caption: '',
+        picture: null // Initialize picture as null
+    });
+
+    //script add kore nite hobe.
+    const cloudinaryRef = useRef();
+    const widgetRef = useRef();
+    useEffect(()=>{
+        cloudinaryRef.current = window.cloudinary;
+       widgetRef.current = cloudinaryRef.current.createUploadWidget({
+            cloudName: 'dhqvosimu',
+            uploadPreset: 'jhc18w5a'
+        }, function(error, result){
+            console.log(result);
+        })
+
+    }, [])
+
+
+    const handleChange = (event) => {
+        const { name, value, files } = event.target;
+        // Check if the input is a file input
+        if (files) {
+            setInputs(inputs => ({ ...inputs, [name]: files[0] }));
+        } else {
+            setInputs(inputs => ({ ...inputs, [name]: value }));
+        }
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+
+            console.log(inputs);
+            // Upload file to S3 bucket
+          
+
+            // Now you can use pictureUrl along with other inputs
+            // console.log('Uploaded picture URL:', pictureUrl);
+            // console.log('Caption:', inputs.caption);
+            // Make API call to save the post with the pictureUrl
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        }
+    }
+
+
+
+
   return (
     <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-    <form>
+    <form onSubmit={handleSubmit}>
         {/* <!-- Post Content Section --> */}
         <div className="mb-6">
             <label htmlFor="postContent" className="block text-gray-700 text-sm font-bold mb-2">Post Content:</label>
-            <textarea id="postContent" name="postContent" rows="4" className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+            <textarea id="postContent" name="caption" rows="4" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
     sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="What's on your mind?"></textarea>
         </div>
         {/* <!-- File Attachment Section --> */}
         <div className="mb-6">
             <label htmlFor="fileAttachment" className="block text-gray-700 text-sm font-bold mb-2">Attach File:</label>
             <div className="relative border-2 rounded-md px-4 py-3 bg-white flex items-center justify-between hover:border-blue-500 transition duration-150 ease-in-out">
-                <input type="file" id="fileAttachment" name="fileAttachment" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <input id="fileAttachment" name="picture" onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                 <div className="flex items-center">
                     <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
