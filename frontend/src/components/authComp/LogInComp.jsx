@@ -15,11 +15,13 @@ export default function LogInForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const inputsWithAction = {...inputs, action: "login"};
+        const inputsWithAction = {...inputs,table: "users", action: "login"};
         axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
             console.log(response.data);
-         
+            navigate("/dashboard", {});
         });
+
+       
         
     }
     return (

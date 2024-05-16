@@ -22,7 +22,7 @@ export default function ListUser() {
             }
         }
 
-        const inputsWithAction = {...inputs, action: "register"};
+        const inputsWithAction = {...inputs,table: "users", action: "register"};
 
         axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
             console.log(response.data);
