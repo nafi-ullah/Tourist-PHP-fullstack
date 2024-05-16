@@ -15,7 +15,16 @@ export default function ListUser() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost/api/user/save', inputs).then(function(response){
+        for (const key in inputs) {
+            if (!inputs[key]) {
+                alert(`${key} field is required`);
+                return;
+            }
+        }
+
+        const inputsWithAction = {...inputs,table: "users", action: "register"};
+
+        axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
             console.log(response.data);
          
         });
@@ -45,7 +54,7 @@ export default function ListUser() {
                         </tr>
                         <tr>
                             <th>
-                                <label>Mobile: </label>
+                                <label>Email: </label>
                             </th>
                             <td>
                                 <input type="email" name="email" onChange={handleChange} />
@@ -61,7 +70,7 @@ export default function ListUser() {
                         </tr>
                         <tr>
                             <td colSpan="2" align ="right">
-                                <button>Sign Up</button>
+                                <button className="bg-black">Sign Up</button>
                             </td>
                         </tr>
                     </tbody>
