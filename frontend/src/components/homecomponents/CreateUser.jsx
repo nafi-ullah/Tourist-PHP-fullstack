@@ -23,24 +23,24 @@ export default function ListUser() {
     }
     return (
         <div>
-            <h1>Create user</h1>
+            
             <form onSubmit={handleSubmit}>
                 <table cellSpacing="10">
                     <tbody>
                         <tr>
                             <th>
-                                <label>Name: </label>
+                                <label>Username: </label>
                             </th>
                             <td>
-                                <input type="text" name="name" onChange={handleChange} />
+                                <input type="text" name="username" onChange={handleChange} />
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                <label>Email: </label>
+                                <label>Fullname: </label>
                             </th>
                             <td> 
-                                <input type="text" name="email" onChange={handleChange} />
+                                <input type="text" name="fullname" onChange={handleChange} />
                             </td>
                         </tr>
                         <tr>
@@ -48,12 +48,20 @@ export default function ListUser() {
                                 <label>Mobile: </label>
                             </th>
                             <td>
-                                <input type="text" name="mobile" onChange={handleChange} />
+                                <input type="email" name="email" onChange={handleChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label>Password: </label>
+                            </th>
+                            <td>
+                                <input type="password" name="password" onChange={handleChange} />
                             </td>
                         </tr>
                         <tr>
                             <td colSpan="2" align ="right">
-                                <button>Save</button>
+                                <button>Sign Up</button>
                             </td>
                         </tr>
                     </tbody>
