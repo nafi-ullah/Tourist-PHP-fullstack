@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PostContentCard = () => {
+const PostContentCard = ({headline, caption, picture}) => {
   return (
     <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md ">
     {/* <!-- User Info with Three-Dot Menu --> */}
@@ -25,13 +25,13 @@ const PostContentCard = () => {
     </div>
     {/* <!-- Message --> */}
     <div className="mb-4">
-        <p className="text-gray-800">Just another day with adorable kittens! 🐱 <a href="" className="text-blue-600">#CuteKitten</a>
+        <p className="text-gray-800"><div className='text-bold'>{headline}</div> <br/> {caption} 🐱 <a href="" className="text-blue-600">#CuteKitten</a>
             <a href="" className="text-blue-600">#AdventureCat</a>
         </p>
     </div>
     {/* <!-- Image --> */}
     <div className="mb-4">
-        <img src="https://img.freepik.com/free-photo/beautiful-architecture-building-exterior-city-kuala-lumpur-skyline_74190-9949.jpg" alt="Post Image" className="w-full h-96 object-cover rounded-md" />
+        <img src={picture} alt="Post Image" className="w-full h-96 object-cover rounded-md" />
     </div>
     {/* <!-- Like and Comment Section --> */}
     <div className="flex items-center justify-between text-gray-500">
@@ -59,3 +59,6 @@ const PostContentCard = () => {
 }
 
 export default PostContentCard
+
+
+// https://img.freepik.com/free-photo/beautiful-architecture-building-exterior-city-kuala-lumpur-skyline_74190-9949.jpg

@@ -23,20 +23,18 @@ const DashboardLayout = () => {
 
   return (
     
-   <div>
+   <div className="gap-4 p-5 h-full overflow-y-auto">
+   {posts.map((post, key) => (
+                <PostContentCard
+                    key={key}
+                    headline={post.headline}
+                    caption={post.caption}
+                    picture={post.picture}
+                />
+            ))}
    
       
         
-            <div className="gap-4 p-5 h-full overflow-y-auto">
-                <PostContentCard />
-                <PostContentCard />
-                <PostContentCard />
-                <PostContentCard />
-                <PostContentCard />
-                <PostContentCard />
-            </div>
- 
-
         </div>
 
   
