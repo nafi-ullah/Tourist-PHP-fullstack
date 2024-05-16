@@ -2,11 +2,11 @@ import React from 'react'
 
 const PostContentCard = () => {
   return (
-    <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md max-w-full">
+    <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md ">
     {/* <!-- User Info with Three-Dot Menu --> */}
     <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
-            <img src="https://placekitten.com/40/40" alt="User Avatar" className="w-8 h-8 rounded-full" />
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/027/951/137/small_2x/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png" alt="User Avatar" className="w-8 h-8 rounded-full" />
             <div>
                 <p className="text-gray-800 font-semibold">tattaku Doe</p>
                 <p className="text-gray-500 text-sm">Posted 2 hours ago</p>
@@ -31,7 +31,7 @@ const PostContentCard = () => {
     </div>
     {/* <!-- Image --> */}
     <div className="mb-4">
-        <img src="https://placekitten.com/400/300" alt="Post Image" className="w-full h-48 object-cover rounded-md" />
+        <img src="https://img.freepik.com/free-photo/beautiful-architecture-building-exterior-city-kuala-lumpur-skyline_74190-9949.jpg" alt="Post Image" className="w-full h-96 object-cover rounded-md" />
     </div>
     {/* <!-- Like and Comment Section --> */}
     <div className="flex items-center justify-between text-gray-500">
