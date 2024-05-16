@@ -1,7 +1,14 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: *");
+// header('Content-Type: application/json');
+// header('Access-Control-Allow-Methods: GET, POST,PUT, DELETE'); // Add OPTIONS method
+// header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+
 // Database credentials
-$connection = mysqli_connect('localhost', 'mysqldib', 'nafipass', 'tourist');
+$connection = mysqli_connect('localhost', 'mysqldib', 'nafipass', 'tourblog');
 
 // Check connection
 if ($connection) {

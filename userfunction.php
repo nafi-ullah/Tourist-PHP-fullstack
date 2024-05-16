@@ -1,5 +1,12 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: *");
+//  header('Content-Type: application/json');
+//  header('Access-Control-Allow-Methods: GET, POST,PUT, DELETE'); // Add OPTIONS method
+// header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+
 require 'dbconnection.php';
 require 'vendor/autoload.php';
 use Firebase\JWT\JWT;
@@ -122,8 +129,8 @@ function login($username, $password)
                 'iss' => 'naficoder',
                 'iat' => time(),
                 'exp' => strtotime("+1 hour"),
-                // 'userid' => $user['userid'],
-                // 'username' => $user['username']
+                'userid' => $user['userid'],
+                'username' => $user['username']
                 // You can add more data to the payload if needed
             ];
            
