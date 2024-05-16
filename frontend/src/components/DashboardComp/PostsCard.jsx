@@ -22,7 +22,11 @@ const PostsCard = () => {
             cloudName: 'dhqvosimu',
             uploadPreset: 'jhc18w5a'
         }, function(error, result){
-            console.log(result);
+            if (!error && result && result.event === 'success') {
+                const imageUrl = result.info.secure_url;
+                setInputs(inputs => ({ ...inputs, picture: imageUrl }));
+            console.log(inputs);
+            }
         })
 
     }, [])
