@@ -34,6 +34,7 @@ const DashboardLayout = () => {
                     profilepic={post.profilepic}
                     timestamp={post.timestamp}
                     username={post.username}
+                    comment_count={post.comment_count}
                 />
             ))}
    

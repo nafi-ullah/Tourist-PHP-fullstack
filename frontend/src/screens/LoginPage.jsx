@@ -1,81 +1,19 @@
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-import { postCred } from "../utils/auth";
 
-import axios from "axios";
 import ListUser from "../components/authComp/CreateUser";
 import LogInForm from "../components/authComp/LogInComp";
 
 
 const LoginPage = () => {
    
-    // const [password, setPassword] = useState('');
-    // const [username, setUserName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [fullname, setFullName] = useState('');
+  
     const [showSignUp, setShowSignUp] = useState(false);
    
   
 
 
-    // const handleButtonClick = async () => {
 
-    //     // if(fullname.length == 0){
-    //     //     alert("Name has left blank");
-    //     // }
-    //     // else if(username.length == 0){
-    //     //     alert("Username has left blank");
-    //     // }
-    //     // else if(email.length == 0){
-    //     //     alert("email has left blank");
-    //     // }
-    //     // else if(password.length == 0){
-    //     //     alert("password has left blank");
-    //     // }
-    
-    //     try{
-            
-     
-    //       const response = await postCred({
-    //         username,
-    //         password
-    //       }
-    //      );
-    
-        
-    //     //   console.log('Response:', password);
-    //     console.log(response);
-
-
-    //     if(response.token ){
-    //       if(response.isVoted){
-    //         navigate("/vote-complete", {
-    //             state: {
-    //             //   regno: regno,
-    //             },
-    //           });
-    //       }
-    //     }
-    //     else{
-    //         // const notify = () => toast("Bad Credential, Try Right Credential");
-    //         // notify();
-    //         console.error('Error:');
-    //     }
-      
-    
-
-     
-    
-    //     }catch(e){
-    //     //     const notify = () => toast("Bad Credential, Try Right Credential");
-    //        console.error('Error:', e);
-    //     //   notify();
-    //     }
-    
-    //   };
       const handleSignUp = () => {
        setShowSignUp(true);
       };
