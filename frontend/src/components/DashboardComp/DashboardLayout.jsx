@@ -30,6 +30,10 @@ const DashboardLayout = () => {
                     headline={post.headline}
                     caption={post.caption}
                     picture={post.picture}
+                    fullname={post.fullname}
+                    profilepic={post.profilepic}
+                    timestamp={post.timestamp}
+                    username={post.username}
                 />
             ))}
    

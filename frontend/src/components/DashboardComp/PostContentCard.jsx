@@ -1,15 +1,15 @@
 import React from 'react'
 
-const PostContentCard = ({headline, caption, picture}) => {
+const PostContentCard = ({headline, caption, picture, fullname, profilepic, timestamp, username}) => {
   return (
     <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md ">
     {/* <!-- User Info with Three-Dot Menu --> */}
     <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/027/951/137/small_2x/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png" alt="User Avatar" className="w-8 h-8 rounded-full" />
+            <img src={profilepic} alt="User Avatar" className="w-8 h-8 rounded-full" />
             <div>
-                <p className="text-gray-800 font-semibold">tattaku Doe</p>
-                <p className="text-gray-500 text-sm">Posted 2 hours ago</p>
+                <p className="text-gray-800 font-semibold">{fullname} </p>
+                <p className="text-gray-500 text-sm"><i>@{username}</i> Posted on {timestamp}</p>
             </div>
         </div>
         <div className="text-gray-500 cursor-pointer">
