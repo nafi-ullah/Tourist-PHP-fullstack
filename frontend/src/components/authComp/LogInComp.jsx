@@ -22,7 +22,15 @@ export default function LogInForm() {
           const { message, user, jwt } = data;
     
           if (status === 200 && user) {
-            const { fullname, userid, username, profilepic, email } = user;
+            const fullname = user.fullname || '';
+        const userid = user.userid || '';
+        const username = user.username || '';
+        const profilepic = user.profilepic || '';
+        const bio = user.bio || '';
+        const coverpic = user.coverpic || '';
+        const email = user.email || '';
+        const jwtToken = jwt || '';
+
     
             navigate("/dashboard", {
               state: {
@@ -31,6 +39,8 @@ export default function LogInForm() {
                 username,
                 profilepic,
                 email,
+                bio,
+                coverpic,
                 jwtToken: jwt
               },
             });

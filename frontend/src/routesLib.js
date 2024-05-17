@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./screens/HomePage";
 import LoginPage from "./screens/LoginPage";
 import Dashboard from "./screens/Dashboard";
+import ProfileEditScren from "./screens/ProfileEditScren";
 
 
 
@@ -18,11 +19,9 @@ function RoutesLib() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<ProfileEditScren />} />
         
-          {/* <Route path="/ai" element={<AIPage />} />
-          <Route path="/room" element={<FriendsPage />} />
-          <Route path="/lobby" element={<Lobby />} />
-          <Route path="/multiplayer" element={<FriensGame />} /> */}
+       
         </Routes>
       </BrowserRouter>
     </>

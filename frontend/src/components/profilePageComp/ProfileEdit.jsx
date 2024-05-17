@@ -7,14 +7,14 @@ import { useLocation } from "react-router-dom";
 
 
 
-const PostsCard = () => {
+const ProfileFrom = () => {
     const [inputs, setInputs] = useState({
         caption: '',
         picture: null // Initialize picture as null
     });
-    const location = useLocation();
+   // const location = useLocation();
   
-    const { userid  } = location.state;
+    //const { userid  } = location.state;
  
 
     //script add kore nite hobe.
@@ -52,21 +52,7 @@ const PostsCard = () => {
         try {
 
             console.log(inputs);
-            if (!inputs.caption) {
-                alert('Caption is required');
-                return;
-            }
-            if (!inputs.headline) {
-                alert('Headline is required');
-                return;
-            }
-            if (!inputs.picture) {
-                alert('Picture is required');
-                return;
-            }
-
-
-            const inputsWithAction = {...inputs,userid: userid, table: "posts"};
+            const inputsWithAction = {...inputs,userid: 1, table: "posts"};
             axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
                 console.log(response.data);
                         window.location.reload();
@@ -84,25 +70,46 @@ const PostsCard = () => {
     <form onSubmit={handleSubmit}>
         {/* <!-- Post Content Section --> */}
         <div className="mb-6">
-            <label htmlFor="headlineContent" className="block text-gray-700 text-sm font-bold mb-2">Headline</label>
-            <textarea id="headlineContent" name="headline" rows="2" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
-    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Headline"></textarea>
+            <label htmlFor="fullNameContent" className="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+            <textarea id="fullNameContent" name="fullname" rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Full Name"></textarea>
         </div>
         <div className="mb-6">
-            <label htmlFor="countryContent" className="block text-gray-700 text-sm font-bold mb-2">Country</label>
-            <textarea id="countryContent" name="country" rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
-    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Which Country?"></textarea>
+            <label htmlFor="countryContent" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <input id="countryContent" type='email' name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Which Country?"/>
         </div>
+
         <div className="mb-6">
-            <label htmlFor="postContent" className="block text-gray-700 text-sm font-bold mb-2">Post Content:</label>
-            <textarea id="postContent" name="caption" rows="4" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
-    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="What's on your mind?"></textarea>
+            <label htmlFor="passwordContent" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+            <input id="passwordContent" type='password' name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Which Country?"/>
         </div>
+
+        <div className="mb-6">
+            <label htmlFor="bioContent" className="block text-gray-700 text-sm font-bold mb-2">Bio</label>
+            <textarea id="bioContent" name="fullname" rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Full Name"></textarea>
+        </div>
+        
         {/* <!-- File Attachment Section --> */}
         <div className="mb-6">
-            <label htmlFor="fileAttachment" className="block text-gray-700 text-sm font-bold mb-2">Attach File:</label>
+            <label htmlFor="fileAttachment" className="block text-gray-700 text-sm font-bold mb-2">Profile Picture:</label>
             <div className="relative border-2 rounded-md px-4 py-3 bg-white flex items-center justify-between hover:border-blue-500 transition duration-150 ease-in-out">
-                <input id="fileAttachment" name="picture" onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <input id="fileAttachment" name="profilepic" onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <div className="flex items-center">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    <span className="ml-2 text-sm text-gray-600">Choose a file</span>
+                </div>
+                <span className="text-sm text-gray-500">Max file size: 5MB</span>
+            </div>
+        </div>
+        <div className="mb-6">
+            <label htmlFor="fileAttachment" className="block text-gray-700 text-sm font-bold mb-2">Cover Pic:</label>
+            <div className="relative border-2 rounded-md px-4 py-3 bg-white flex items-center justify-between hover:border-blue-500 transition duration-150 ease-in-out">
+                <input id="fileAttachment" name="coverpic" onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                 <div className="flex items-center">
                     <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -126,4 +133,4 @@ const PostsCard = () => {
   )
 }
 
-export default PostsCard
+export default ProfileFrom
