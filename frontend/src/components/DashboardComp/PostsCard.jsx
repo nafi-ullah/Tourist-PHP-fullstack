@@ -1,9 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
-import { uploadFile } from 'react-s3';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 import { useLocation } from "react-router-dom";
 
 
@@ -14,7 +13,7 @@ const PostsCard = () => {
         picture: null // Initialize picture as null
     });
     const location = useLocation();
-    const navigate = useNavigate();
+  
     const { userid  } = location.state;
  
 
