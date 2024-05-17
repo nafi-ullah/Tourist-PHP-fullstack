@@ -11,7 +11,7 @@ const PictureAndCover = () => {
 
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center w-4/5 m-auto mb-4">
+    <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center w-3/5 m-auto mb-4">
                         {/* <!-- Banner Profile --> */}
                         <div className="relative">
                             <img src={coverpic} alt="Banner Profile" className="min-w-[900px] h-64 rounded-t-lg" />

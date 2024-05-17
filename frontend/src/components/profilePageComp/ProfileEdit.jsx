@@ -66,7 +66,7 @@ const ProfileFrom = () => {
 
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+    <div className="bg-white p-8 rounded-lg shadow-md  w-3/5 m-auto">
     <form onSubmit={handleSubmit}>
         {/* <!-- Post Content Section --> */}
         <div className="mb-6">
@@ -77,19 +77,19 @@ const ProfileFrom = () => {
         <div className="mb-6">
             <label htmlFor="countryContent" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
             <input id="countryContent" type='email' name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
-    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Which Country?"/>
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Email"/>
         </div>
 
         <div className="mb-6">
             <label htmlFor="passwordContent" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
             <input id="passwordContent" type='password' name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
-    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Which Country?"/>
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Your Password"/>
         </div>
 
         <div className="mb-6">
             <label htmlFor="bioContent" className="block text-gray-700 text-sm font-bold mb-2">Bio</label>
-            <textarea id="bioContent" name="fullname" rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
-    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Full Name"></textarea>
+            <textarea id="bioContent" name="fullname" rows="3" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Bio"></textarea>
         </div>
         
         {/* <!-- File Attachment Section --> */}
@@ -126,7 +126,7 @@ const ProfileFrom = () => {
                     <path d="M3.4 20.4l17.45-7.48c.81-.35.81-1.49 0-1.84L3.4 3.6c-.66-.29-1.39.2-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"></path>
                 </svg>
             </button>
-            <span className="text-gray-500 text-sm">Max 280 characters</span>
+           
         </div>
     </form>
 </div>
