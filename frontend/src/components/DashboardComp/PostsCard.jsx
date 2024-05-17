@@ -2,8 +2,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { uploadFile } from 'react-s3';
-import { accessKey, secretKey } from '../../awsKey';
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -12,6 +13,10 @@ const PostsCard = () => {
         caption: '',
         picture: null // Initialize picture as null
     });
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { userid  } = location.state;
+ 
 
     //script add kore nite hobe.
     const cloudinaryRef = useRef();
@@ -25,7 +30,7 @@ const PostsCard = () => {
             if (!error && result && result.event === 'success') {
                 const imageUrl = result.info.secure_url;
                 setInputs(inputs => ({ ...inputs, picture: imageUrl }));
-            console.log(inputs);
+           // console.log(inputs);
             }
         })
 
@@ -48,13 +53,11 @@ const PostsCard = () => {
         try {
 
             console.log(inputs);
-            // Upload file to S3 bucket
-          
-
-            // Now you can use pictureUrl along with other inputs
-            // console.log('Uploaded picture URL:', pictureUrl);
-            // console.log('Caption:', inputs.caption);
-            // Make API call to save the post with the pictureUrl
+            const inputsWithAction = {...inputs,userid: userid, table: "posts"};
+            axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
+                console.log(response.data);
+                        window.location.reload();
+            });
         } catch (error) {
             console.error('Error uploading file:', error);
         }
@@ -67,6 +70,16 @@ const PostsCard = () => {
     <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
     <form onSubmit={handleSubmit}>
         {/* <!-- Post Content Section --> */}
+        <div className="mb-6">
+            <label htmlFor="headlineContent" className="block text-gray-700 text-sm font-bold mb-2">Headline</label>
+            <textarea id="headlineContent" name="headline" rows="2" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Headline"></textarea>
+        </div>
+        <div className="mb-6">
+            <label htmlFor="countryContent" className="block text-gray-700 text-sm font-bold mb-2">Country</label>
+            <textarea id="countryContent" name="country" rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+    sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Which Country?"></textarea>
+        </div>
         <div className="mb-6">
             <label htmlFor="postContent" className="block text-gray-700 text-sm font-bold mb-2">Post Content:</label>
             <textarea id="postContent" name="caption" rows="4" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm

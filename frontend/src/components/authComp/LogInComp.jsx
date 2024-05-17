@@ -18,7 +18,7 @@ export default function LogInForm() {
         const inputsWithAction = {...inputs,table: "users", action: "login"};
         axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
             console.log(response.data);
-            const { fullname, userid, username, profilepic, email, bio } = response.data.user;
+            const { fullname, userid, username, profilepic, email } = response.data.user;
             const jwtToken = response.data.jwt;
 
                       navigate("/dashboard", {
@@ -28,7 +28,7 @@ export default function LogInForm() {
                     username,
                     profilepic,
                     email,
-                    bio,
+                    
                     jwtToken
 
                 },

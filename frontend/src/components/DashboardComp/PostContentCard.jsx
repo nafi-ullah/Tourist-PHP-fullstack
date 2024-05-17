@@ -25,8 +25,8 @@ const PostContentCard = ({headline, caption, picture, fullname, profilepic, time
     </div>
     {/* <!-- Message --> */}
     <div className="mb-4">
-        <p className="text-gray-800"><div className='font-bold text-2xl'>{headline}</div> <br/> {caption} 🐱 <a href="" className="text-blue-600">#CuteKitten</a>
-            <a href="" className="text-blue-600">#AdventureCat</a>
+        <p className="text-gray-800"><div className='font-bold text-2xl'>{headline}</div> <br/> {caption}  
+        
         </p>
     </div>
     {/* <!-- Image --> */}

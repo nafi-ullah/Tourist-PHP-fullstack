@@ -8,18 +8,18 @@ const Dashboard = () => {
   return (
     <div className='bg-[#F4F2EE]'>
      
-        <div className="fixed w-1/5 gap-4 m-5 ">
+        <div className="fixed h-full w-1/5 gap-4 m-5 ">
             <DashProfileCard/>
-            <PostsCard />
+           
         </div>
-        <div className="w-full m-1 ml-1/5 flex">
+        <div className="w-full m-1  flex">
           <div className='w-1/5 h-full '></div>
-          <div className='w-3/5 '>
+          <div className='w-3/5 mr-3 p-5 '>
           <DashboardLayout/>
           </div>
           <div className="fixed w-1/5 postion right-1 gap-4 m-5 ">
-            <CountryQuery/>
-           
+            {/* <CountryQuery/> */}
+            <PostsCard />
         </div>
 
 
