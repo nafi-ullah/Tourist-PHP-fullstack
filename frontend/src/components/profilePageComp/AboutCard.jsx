@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AboutCard = () => {
+const AboutCard = ({fullname, email, bio, profilepic, coverpic, userid}) => {
   return (
     <div className="bg-white p-7 shadow-sm rounded-sm w-3/5 m-auto">
     <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -13,7 +13,7 @@ const AboutCard = () => {
         </span>
         <span className="tracking-wide text-xl">Bio</span>
     </div>
-    <div className='p-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod asperiores atque porro ex, nesciunt, sit adipisci accusamus molestiae a iusto sapiente voluptates optio? Provident, illum amet beatae neque aut nostrum.</div>
+    <div className='p-3'>{bio}</div>
     <div className="flex items-center space-x-2 mt-8 font-semibold text-gray-900 leading-8">
         <span clas="text-green-500">
             <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -28,25 +28,19 @@ const AboutCard = () => {
         <div className="grid md:grid-cols-2 ">
             <div className="grid grid-cols-2">
                 <div className="px-4 py-2 font-semibold">Full Name</div>
-                <div className="px-4 py-2">Jane</div>
+                <div className="px-4 py-2">{fullname}</div>
             </div>
-            <div className="grid grid-cols-2">
-                <div className="px-4 py-2 font-semibold">Surname</div>
-                <div className="px-4 py-2"></div>
-            </div>
+         
             <div className="grid grid-cols-2">
                 <div className="px-4 py-2 font-semibold">Gender</div>
                 <div className="px-4 py-2">Male</div>
             </div>
-            <div className="grid grid-cols-2">
-                <div className="px-4 py-2 font-semibold">Contact No.</div>
-                <div className="px-4 py-2">+11 998001001</div>
-            </div>
+           
             
             <div className="grid grid-cols-2">
                 <div className="px-4 py-2 font-semibold">Email.</div>
                 <div className="px-4 py-2">
-                    <a className="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                    <a className="text-blue-800" href="mailto:jane@example.com">{email}</a>
                 </div>
             </div>
             <div className="grid grid-cols-2">
