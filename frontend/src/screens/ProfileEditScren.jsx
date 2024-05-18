@@ -5,11 +5,13 @@ import AboutCard from '../components/profilePageComp/AboutCard'
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
+
 const ProfileEditScren = () => {
     const [showEditor, setShowEditor] = useState(false);
     const location = useLocation();
     const [loading, setLoading] = useState(true); 
     const [userData, setUserData] = useState(null);
+
 
 
     const handleEditor = ()=>{
@@ -22,7 +24,7 @@ const ProfileEditScren = () => {
     }
 
 
-    const { userid } = location.state;
+    const { userid, showEdit } = location.state;
 
     useEffect(() => {
       const getUserInfo = async () => {
@@ -66,9 +68,10 @@ const ProfileEditScren = () => {
           userid={userid}
           email={userData.email}
         />}
-        <div className='w-4/5 mb-14 flex justify-end'>
+        {showEdit && <div className='w-4/5 mb-14 flex justify-end'>
                 <button onClick={handleEditor}> <div className="text-blue-500 hover:underline"> Edit Profile </div></button>
-        </div>
+        </div>}
+        
     
     </div>
   )

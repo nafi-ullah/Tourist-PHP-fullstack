@@ -7,8 +7,10 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
     const location = useLocation();
     const navigate = useNavigate();
     const goToProfile = () => {
+        const showEdit = false;
         navigate("/profile", {
-            state: { userid },
+            
+            state: { userid, showEdit },
         });
     };
  

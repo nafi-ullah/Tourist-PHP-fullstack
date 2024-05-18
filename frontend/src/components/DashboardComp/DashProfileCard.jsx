@@ -13,10 +13,13 @@ const DashProfileCard = () => {
     const { userid } = location && location.state;
 
     const goToProfile = (event) => {
+        const showEdit = true;
         navigate("/profile", {
-            state: { userid },
+            state: { userid, showEdit },
         });
     };
+
+
 
     useEffect(() => {
         const getUserInfo = async () => {
@@ -61,6 +64,7 @@ const DashProfileCard = () => {
                 <button onClick={goToProfile}>
                     <div className="text-blue-500 hover:underline"> View Profile </div>
                 </button>
+                
             </div>
         </div>
     );
