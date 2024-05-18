@@ -6,6 +6,9 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
   
     const location = useLocation();
     const navigate = useNavigate();
+    const { myuserid  } = location.state;
+
+
     const goToProfile = () => {
         const showEdit = false;
         navigate("/profile", {
@@ -15,7 +18,9 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
     };
 
     const handlePostClick = () => {
-        navigate(`/post/${postid}`);
+        navigate(`/post/${postid}`, {
+            state: { myuserid },
+        });
     };
 
  

@@ -45,7 +45,8 @@ export default function LogInForm() {
                 email,
                 bio,
                 coverpic,
-                jwtToken: jwt
+                jwtToken: jwt,
+                myuserid: userid
               },
             });
           } else {
