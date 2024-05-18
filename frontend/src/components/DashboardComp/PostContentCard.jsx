@@ -1,14 +1,29 @@
 import React from 'react'
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const PostContentCard = ({headline, caption, picture, fullname, profilepic, timestamp, username, comment_count}) => {
-  return (
+const PostContentCard = ({userid, headline, caption, picture, fullname, profilepic, timestamp, username, comment_count}) => {
+  
+    const location = useLocation();
+    const navigate = useNavigate();
+    const goToProfile = () => {
+        navigate("/profile", {
+            state: { userid },
+        });
+    };
+ 
+ 
+    return (
     <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md ">
     {/* <!-- User Info with Three-Dot Menu --> */}
     <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
             <img src={profilepic} alt="User Avatar" className="w-8 h-8 rounded-full" />
             <div>
-                <p className="text-gray-800 font-semibold">{fullname} </p>
+
+                <button onClick={goToProfile}>
+                    <div className="text-gray-800 font-semibold hover:underline hover:text-blue-500"> {fullname} </div>
+                </button>
                 <p className="text-gray-500 text-sm"><i>@{username}</i> Posted on {timestamp}</p>
             </div>
         </div>
