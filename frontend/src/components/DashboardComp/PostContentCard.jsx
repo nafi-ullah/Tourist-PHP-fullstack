@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const PostContentCard = ({userid, headline, caption, picture, fullname, profilepic, timestamp, username, comment_count, postid}) => {
+const PostContentCard = ({userid,country, headline, caption, picture, fullname, profilepic, timestamp, username, comment_count, postid}) => {
   
     const location = useLocation();
     const navigate = useNavigate();
@@ -38,6 +38,9 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
                 </button>
                 <p className="text-gray-500 text-sm"><i>@{username}</i> Posted on {timestamp}</p>
             </div>
+            <div className="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-green-700 bg-green-100 border border-green-300 ">
+            <div className="text-s font-normal leading-none  flex-initial">{country}</div>
+        </div>
         </div>
        
     </div>
