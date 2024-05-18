@@ -6,6 +6,9 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import PostContentCard from '../components/DashboardComp/PostContentCard';
 import { Pencil } from 'lucide-react';
+import PostEditCard from '../components/DashboardComp/PostEditCard';
+import NavbarDash from '../components/commons/NavbarDash';
+import FooterDash from '../components/commons/Footer';
 
 
 const ProfileEditScren = () => {
@@ -14,6 +17,15 @@ const ProfileEditScren = () => {
     const [loading, setLoading] = useState(true); 
     const [userData, setUserData] = useState(null);
     const [posts, setPosts] = useState([]);
+    const [postEditor, setPostEditor] = useState(true);
+
+    const [npostid, setNpostid] = useState(null);
+    const [nuserid, setUserid] = useState(null);
+    const [ncaption, setCaption] = useState(null);
+    const [nheadline, setHeadline] = useState(null);
+    const [ncountry, setCountry] = useState(null);
+    const [npicture, setPicture] = useState(null);
+   
 
 
 
@@ -69,8 +81,19 @@ const ProfileEditScren = () => {
       return <div>Loading...</div>; // Loading component
   }
 
+  const handlePostEditor = ({postid, userid, headline, caption, picture, country}) =>{
+    setNpostid(postid);
+    setUserid(userid);
+    setHeadline(headline);
+    setCaption(caption);
+    setPicture(picture);
+    setCountry(country);
+      setPostEditor(false);
+  }
+
   return (
     <div className='bg-[#F4F2EE]'>
+        <NavbarDash />
         <PictureAndCover coverpic={userData.coverpic}
         profilepic={userData.profilepic}
         fullname={userData.fullname}
@@ -99,11 +122,14 @@ const ProfileEditScren = () => {
         </div>
 
         <div className="gap-4 p-5 w-1/2 m-auto flex flex-wrap justify-center h-full overflow-y-auto">
+   
+   {postEditor && <div>
    {posts.map((post, key) => (
     <div className='relative'>
        {showEdit && <div className="absolute top-16 right-10 w-5 h-5 cursor-pointer">
-            <Pencil />
+           <button onClick={() => handlePostEditor({ postid: post.postid, userid: post.userid, headline: post.headline, caption: post.caption, picture: post.picture, country: post.country })}>  <Pencil /></button>
          </div>}
+
                 <PostContentCard
                     key={key}
                     headline={post.headline}
@@ -116,15 +142,22 @@ const ProfileEditScren = () => {
                     comment_count={post.comment_count}
                     userid={post.userid}
                     postid={post.postid}
+                    country={post.country}
                    
                 />
                 </div>
             ))}
+            </div>}
+
+            {!postEditor && <div>
+                <PostEditCard postid={npostid} caption={ncaption} headline={nheadline} picture={npicture} userid={nuserid}/>
+                </div>}
+   
         
         </div>
         </div>
         
-    
+    <FooterDash/>
     </div>
   )
 }

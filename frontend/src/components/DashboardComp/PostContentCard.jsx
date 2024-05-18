@@ -26,7 +26,7 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
  
  
     return (
-    <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md " >
+    <div className="my-5 w-full min-w-[600px] bg-white p-8 rounded-lg shadow-md " >
     {/* <!-- User Info with Three-Dot Menu --> */}
     <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">

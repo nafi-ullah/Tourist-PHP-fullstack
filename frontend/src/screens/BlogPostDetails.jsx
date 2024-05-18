@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import CommentCard from '../components/blogComponent/Comment';
 import { useLocation } from "react-router-dom";
+import NavbarDash from '../components/commons/NavbarDash';
+import FooterDash from '../components/commons/Footer';
+
 
 const BlogPostDetails = () => {
     const { postid } = useParams();
@@ -83,12 +86,14 @@ const BlogPostDetails = () => {
 
 
   return (
-    <div className='h-full w-full flex justify-center'>
-        <div className='w-2/5 mt-20'>
+    <div className='h-full w-full flex flex-col justify-center'>
+        <NavbarDash />
+    
+        <div className='w-full  mt-20'>
             <div>
-            <img src={post.picture} alt="Post Image" className="w-full h-96 object-cover rounded-md" />
+            <img src={post.picture} alt="Post Image" className="w-1/2 m-auto h-96 object-cover rounded-md" />
             </div>
-        
+        <div className='w-1/2 m-auto'>
             <div className='text-6xl font-bold mt-8'>{post.headline}</div>
             <div className="flex items-center space-x-2 mt-5">
             <img src={post.profilepic} alt="User Avatar" className="w-12 h-12 rounded-full" />
@@ -138,6 +143,11 @@ const BlogPostDetails = () => {
 </div> 
 
         </div>
+        </div>
+        {/* <div>
+
+        </div> */}
+        <FooterDash />
     </div>
   )
 }

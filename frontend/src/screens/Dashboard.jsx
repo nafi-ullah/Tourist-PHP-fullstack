@@ -3,13 +3,19 @@ import DashboardLayout from '../components/DashboardComp/DashboardLayout'
 import DashProfileCard from '../components/DashboardComp/DashProfileCard'
 import PostsCard from '../components/DashboardComp/PostsCard'
 import CountryQuery from '../components/DashboardComp/CountryQuery'
+import NavbarDash from '../components/commons/NavbarDash'
+
+
 
 const Dashboard = () => {
   return (
     <div className='bg-[#F4F2EE]'>
+      <NavbarDash />
+     
      
         <div className="fixed  w-1/4 gap-4 m-5 flex justify-end">
             <DashProfileCard/>
+            
            
         </div>
         <div className="w-full m-1  flex justify-center">
