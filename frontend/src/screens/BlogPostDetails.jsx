@@ -8,11 +8,14 @@ const BlogPostDetails = () => {
     const { postid } = useParams();
     const [post, setPost] = useState(null);
     const [inputs, setInputs] = useState([]);
+    const [comments, setComments] = useState([]);
 
     const location = useLocation();
     const { myuserid  } = location.state;
+   
 
     useEffect(() => {
+        getComments();
         console.log(postid);
         console.log(myuserid);
         axios.get(`http://localhost/api/users/posts/indpost/${postid}`).then(response => {
@@ -23,6 +26,17 @@ const BlogPostDetails = () => {
     if (!post) {
         return <div>Loading...</div>;
     }
+
+  
+    
+
+    function getComments() {
+        axios.get( `http://localhost/api/users/comments/${postid}`).then(function(response) {
+            console.log(response.data);
+            setComments(response.data);
+        });
+    }
+
 
 
 
@@ -106,7 +120,18 @@ const BlogPostDetails = () => {
     </form>
         </section>
 
-      <CommentCard />
+        {comments.map((post, key) => (
+                <CommentCard
+                    key={key}
+                   
+                    comment={post.comment}
+                    fullname={post.fullname}
+                    profilepic={post.profilepic}
+                    timestamp={post.timestamp}
+                   
+                   
+                />
+            ))}
 
 
         </div>

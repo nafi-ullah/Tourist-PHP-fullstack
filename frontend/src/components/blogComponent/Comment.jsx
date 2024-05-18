@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CommentCard = () => {
+const CommentCard = ({profilepic, fullname, timestamp, comment}) => {
   return (
     <div>
         <article className="p-6 text-base bg-white rounded-lg da">
@@ -9,9 +9,9 @@ const CommentCard = () => {
             <p className="inline-flex items-center mr-3 text-sm text-gray-900  font-semibold">
                 <img
                     className="mr-2 w-10 h-10 rounded-full"
-                    src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                    alt="Michael Gough"/>Michael Gough</p>
-            <p className="text-sm text-gray-600 "><div>Feb. 8, 2022</div></p>
+                    src={profilepic}
+                    alt="Michael Gough"/>{fullname}</p>
+            <p className="text-sm text-gray-600 "><div>{timestamp}</div></p>
         </div>
         <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
             className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
@@ -41,8 +41,7 @@ const CommentCard = () => {
             </ul>
         </div>
     </footer>
-    <p className="text-gray-500 ">Very straight-to-point article. Really worth time reading. Thank you! But tools are just the
-        instruments for the UX designers. The knowledge of the design tools are as important as the
+    <p className="text-gray-500 ">{comment}
         creation of the design strategy.</p>
     <div className="flex items-center mt-4 space-x-4">
         <button type="button"
