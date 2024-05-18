@@ -12,7 +12,7 @@ export default function ListUser() {
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}));
     }
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         for (const key in inputs) {
@@ -24,9 +24,9 @@ export default function ListUser() {
 
         const inputsWithAction = {...inputs,table: "users", action: "register"};
 
-        axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
+      await  axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
             console.log(response.data);
-         
+           window.location.reload();
         });
         
     }
@@ -68,9 +68,11 @@ export default function ListUser() {
                                 <input type="password" name="password" onChange={handleChange} />
                             </td>
                         </tr>
-                        <tr>
-                            <td colSpan="2" align ="right">
-                                <button className="bg-black">Sign Up</button>
+                        <tr><th>
+                                
+                            </th>
+                            <td >
+                                <button className="bg-black w-[200px] text-white rounded-lg">Sign Up</button>
                             </td>
                         </tr>
                     </tbody>
