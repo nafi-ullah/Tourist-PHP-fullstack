@@ -8,10 +8,18 @@ import { useLocation } from "react-router-dom";
 
 
 const ProfileFrom = () => {
+    const location = useLocation();
+    const { fullname, userid, username,coverpic, profilepic,bio,password, email } =location && location.state;
+
     const [inputs, setInputs] = useState({
-        caption: '',
-        picture: null // Initialize picture as null
-    });
+        fullname:  fullname? fullname : '',
+        email: email? email : '',
+        password:  password ? password : '',
+        bio:  bio? bio : bio,
+        profilepic: profilepic? profilepic: profilepic,
+        coverpic: coverpic? coverpic : '',
+
+      });
    // const location = useLocation();
   
     //const { userid  } = location.state;
@@ -52,10 +60,10 @@ const ProfileFrom = () => {
         try {
 
             console.log(inputs);
-            const inputsWithAction = {...inputs,userid: 1, table: "posts"};
-            axios.post('http://localhost/api/user/save', inputsWithAction).then(function(response){
+            const inputsWithAction = {...inputs,userid: userid};
+           await  axios.put(`http://localhost/api/user/users`, inputs).then(function(response){
                 console.log(response.data);
-                        window.location.reload();
+                        // window.location.reload();
             });
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -71,24 +79,24 @@ const ProfileFrom = () => {
         {/* <!-- Post Content Section --> */}
         <div className="mb-6">
             <label htmlFor="fullNameContent" className="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
-            <textarea id="fullNameContent" name="fullname" rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+            <textarea id="fullNameContent" name="fullname" value={inputs.fullname} rows="1" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
     sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Full Name"></textarea>
         </div>
         <div className="mb-6">
-            <label htmlFor="countryContent" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input id="countryContent" type='email' name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+            <label htmlFor="emailContent" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <input id="emailContent" type='email' name="country"  value={inputs.email} onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
     sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Email"/>
         </div>
 
         <div className="mb-6">
             <label htmlFor="passwordContent" className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-            <input id="passwordContent" type='password' name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+            <input id="passwordContent" type='password' value={inputs.password} name="country" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
     sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Your Password"/>
         </div>
 
         <div className="mb-6">
             <label htmlFor="bioContent" className="block text-gray-700 text-sm font-bold mb-2">Bio</label>
-            <textarea id="bioContent" name="fullname" rows="3" onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
+            <textarea id="bioContent" name="fullname" rows="3" value={inputs.bio} onChange={handleChange} className="w-full border-2 rounded-md px-4 py-2 leading-5 transition duration-150 ease-in-out sm:text-sm
     sm:leading-5 resize-none focus:outline-none focus:border-blue-500" placeholder="Bio"></textarea>
         </div>
         
@@ -96,7 +104,7 @@ const ProfileFrom = () => {
         <div className="mb-6">
             <label htmlFor="fileAttachment" className="block text-gray-700 text-sm font-bold mb-2">Profile Picture:</label>
             <div className="relative border-2 rounded-md px-4 py-3 bg-white flex items-center justify-between hover:border-blue-500 transition duration-150 ease-in-out">
-                <input id="fileAttachment" name="profilepic" onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <input id="fileAttachment" name="profilepic" value={inputs.profilepic} onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                 <div className="flex items-center">
                     <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -109,7 +117,7 @@ const ProfileFrom = () => {
         <div className="mb-6">
             <label htmlFor="fileAttachment" className="block text-gray-700 text-sm font-bold mb-2">Cover Pic:</label>
             <div className="relative border-2 rounded-md px-4 py-3 bg-white flex items-center justify-between hover:border-blue-500 transition duration-150 ease-in-out">
-                <input id="fileAttachment" name="coverpic" onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                <input id="fileAttachment" name="coverpic" value={inputs.coverpic} onClick={()=> widgetRef.current.open()} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                 <div className="flex items-center">
                     <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
