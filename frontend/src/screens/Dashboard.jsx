@@ -8,16 +8,16 @@ const Dashboard = () => {
   return (
     <div className='bg-[#F4F2EE]'>
      
-        <div className="fixed h-full w-1/5 gap-4 m-5 ">
+        <div className="fixed h-full w-1/3 gap-4 m-5 flex justify-end">
             <DashProfileCard/>
            
         </div>
         <div className="w-full m-1  flex">
-          <div className='w-1/5 h-full '></div>
-          <div className='w-3/5 mr-3 p-5 '>
+          <div className='w-1/3 h-full '></div>
+          <div className='w-2/5 pr-5 pb-5 pl-5'>
           <DashboardLayout/>
           </div>
-          <div className="fixed w-1/5 postion right-1 gap-4 m-5 ">
+          <div className="fixed w-1/4 postion right-0 gap-4 m-5 ">
             {/* <CountryQuery/> */}
             <PostsCard />
         </div>
