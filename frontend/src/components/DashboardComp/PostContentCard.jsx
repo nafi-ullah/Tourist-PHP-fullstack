@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const PostContentCard = ({userid, headline, caption, picture, fullname, profilepic, timestamp, username, comment_count}) => {
+const PostContentCard = ({userid, headline, caption, picture, fullname, profilepic, timestamp, username, comment_count, postid}) => {
   
     const location = useLocation();
     const navigate = useNavigate();
@@ -13,10 +13,15 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
             state: { userid, showEdit },
         });
     };
+
+    const handlePostClick = () => {
+        navigate(`/post/${postid}`);
+    };
+
  
  
     return (
-    <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md ">
+    <div className="my-5 w-full bg-white p-8 rounded-lg shadow-md " >
     {/* <!-- User Info with Three-Dot Menu --> */}
     <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
@@ -60,6 +65,10 @@ const PostContentCard = ({userid, headline, caption, picture, fullname, profilep
                 <span>42 Likes</span>
             </button> */}
         </div>
+        <div >
+        <button onClick={handlePostClick} >
+                    <div className="text-blue-500 hover:underline"> Read Full Blog </div>
+                </button></div>
         <button className="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
             <svg width="22px" height="22px" viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

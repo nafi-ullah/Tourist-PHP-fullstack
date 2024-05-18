@@ -4,8 +4,10 @@ import PostsCard from './PostsCard'
 import PostContentCard from './PostContentCard'
 import { useEffect, useState } from "react";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 const DashboardLayout = () => {
+    const navigate = useNavigate();
 
     const [posts, setPosts] = useState([]);
     useEffect(() => {
@@ -19,8 +21,7 @@ const DashboardLayout = () => {
         });
     }
 
-
-
+    
   return (
     
    <div className="gap-4 p-5 h-full overflow-y-auto">
@@ -36,6 +37,8 @@ const DashboardLayout = () => {
                     username={post.username}
                     comment_count={post.comment_count}
                     userid={post.userid}
+                    postid={post.postid}
+                   
                 />
             ))}
    

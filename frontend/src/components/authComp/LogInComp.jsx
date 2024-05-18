@@ -1,8 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { setCookie } from "../../utils/cookiesFunction";
-import { uid } from "../../utils/cookiesName";
+
 
 
 export default function LogInForm() {
@@ -34,7 +33,7 @@ export default function LogInForm() {
         const email = user.email || '';
         const jwtToken = jwt || '';
 
-        setCookie(uid, userid, 1);
+
 
     
             navigate("/dashboard", {
