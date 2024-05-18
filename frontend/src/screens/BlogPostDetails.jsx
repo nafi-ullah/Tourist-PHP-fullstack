@@ -26,7 +26,9 @@ const BlogPostDetails = () => {
     if (!post) {
         return <div>Loading...</div>;
     }
-
+    if (!comments) {
+        return <div>Loading...</div>;
+    }
   
     
 
@@ -45,19 +47,19 @@ const BlogPostDetails = () => {
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}));
     }
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
             console.log(inputs);
         const inputsWithAction = {...inputs,postid: postid, userid: myuserid, table: "comments"};
-        axios.post('http://localhost/api/user/save', inputsWithAction)
+      await  axios.post('http://localhost/api/user/save', inputsWithAction)
         .then(function(response) {
           const { message, data, status } = response;
         
-    
+            
           if (status === 200 ) {
         
                 console.log("yoo commented");
-    
+            window.location.reload();
             
           } else {
             alert(message);
@@ -86,6 +88,7 @@ const BlogPostDetails = () => {
             <div>
             <img src={post.picture} alt="Post Image" className="w-full h-96 object-cover rounded-md" />
             </div>
+        
             <div className='text-6xl font-bold mt-8'>{post.headline}</div>
             <div className="flex items-center space-x-2 mt-5">
             <img src={post.profilepic} alt="User Avatar" className="w-12 h-12 rounded-full" />
@@ -119,7 +122,7 @@ const BlogPostDetails = () => {
         </button>
     </form>
         </section>
-
+        <div>
         {comments.map((post, key) => (
                 <CommentCard
                     key={key}
@@ -132,7 +135,7 @@ const BlogPostDetails = () => {
                    
                 />
             ))}
-
+</div> 
 
         </div>
     </div>
