@@ -38,6 +38,7 @@ const DashboardLayout = () => {
                     comment_count={post.comment_count}
                     userid={post.userid}
                     postid={post.postid}
+                    country={post.country}
                    
                 />
             ))}

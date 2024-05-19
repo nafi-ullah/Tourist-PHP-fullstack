@@ -92,9 +92,11 @@ export default function LogInForm() {
                                 <input type="password" name="password" onChange={handleChange} />
                             </td>
                         </tr>
-                        <tr>
-                            <td colSpan="2" align ="right">
-                                <button className="text-white bg-black">Log in</button>
+                        <tr><th>
+                                
+                            </th>
+                            <td >
+                                <button className="bg-black w-[200px] text-white rounded-lg">Log in</button>
                             </td>
                         </tr>
                     </tbody>

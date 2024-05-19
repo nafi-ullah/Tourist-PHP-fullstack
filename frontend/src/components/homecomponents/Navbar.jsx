@@ -31,7 +31,7 @@ const Navbar = () => {
       <div>
         <h1 onClick={handleNav} className={logo ? 'hidden' : 'block'}>Travel Blog.</h1>
       </div>
-      <ul className='hidden md:flex'>
+      <ul className='hidden gap-7 md:flex'>
         <li>Home</li>
         <li>Destinations</li>
         <li>Travel</li>
@@ -49,7 +49,7 @@ const Navbar = () => {
 
       {/* Mobile menu dropdown */}
       <div onClick={handleNav} className={nav ? 'absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}>
-        <ul>
+        <ul className='gap-4'>
           <h1>BEACHES.</h1>
           <li className='border-b'>Home</li>
           <li className='border-b'>Destinations</li>

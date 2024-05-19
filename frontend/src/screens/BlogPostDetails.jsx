@@ -96,13 +96,16 @@ const BlogPostDetails = () => {
         <div className='w-1/2 m-auto'>
             <div className='text-6xl font-bold mt-8'>{post.headline}</div>
             <div className="flex items-center space-x-2 mt-5">
-            <img src={post.profilepic} alt="User Avatar" className="w-12 h-12 rounded-full" />
+            <img src={post.profilepic} alt="User Avatar" className="w-16 h-16 rounded-full" />
             <div>
 
                 <button >
                     <div className="text-gray-800 font-semibold hover:underline hover:text-blue-500"> {post.fullname} </div>
                 </button>
                 <p className="text-gray-500 text-sm"><i>@{post.username}</i> Posted on {post.timestamp}</p>
+                <div className="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-green-700 bg-green-100 border border-green-300 ">
+            <div className="text-s font-normal leading-none  flex-initial">{post.country}</div>
+        </div>
             </div>
         </div>
 
