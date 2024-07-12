@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <div className='flex w-full justify-between items-center h-20 px-4 absolute z-10 text-white'>
       <div>
-        <h1 onClick={handleNav} className={logo ? 'hidden' : 'block'}>Travel Blog.</h1>
+        <h1 onClick={handleNav} className={logo ? 'hidden' : 'block px-5'}>Travel Blog.</h1>
       </div>
       <ul className='hidden gap-7 md:flex'>
         <li>Home</li>
@@ -38,8 +38,8 @@ const Navbar = () => {
         <li>View</li>
         <li>Blog</li>
       </ul>
-      <div className='hidden md:flex'>
-            <button onClick={handleLogin}>Log in</button>
+      <div className='hidden md:flex '>
+            <button onClick={handleLogin} className='px-5 bg-teal-700 rounded-lg py-2'>Log in</button>
       </div>
 
       {/* Hamburger */}
@@ -49,6 +49,7 @@ const Navbar = () => {
 
       {/* Mobile menu dropdown */}
       <div onClick={handleNav} className={nav ? 'absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}>
+      
         <ul className='gap-4'>
           <h1>BEACHES.</h1>
           <li className='border-b'>Home</li>

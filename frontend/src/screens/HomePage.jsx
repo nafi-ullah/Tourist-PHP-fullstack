@@ -6,18 +6,23 @@ import Hero from '../components/homecomponents/Hero';
 import Search from '../components/homecomponents/Search';
 import Selects from '../components/homecomponents/Selects';
 import Footer from '../components/homecomponents/Footer';
+import NewHero from '../components/homecomponents/NewHero';
 
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='bg-gradient-to-r from-teal-700 to-teal-400 h-screen flex flex-col justify-between'>
     <Navbar />
-    <Hero />
-    <Destinations />
+    <div className='h-20 w-screen '></div>
+    <div>
+    <NewHero />
+    {/* <Destinations />
     <Search />
     <Selects />
-    <Carousel />
+    <Carousel /> */}
     <Footer />
+    </div>
+    
   </div>
   )
 }
